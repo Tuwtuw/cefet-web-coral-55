@@ -1,19 +1,49 @@
 /* EXERCÍCIO 1: fontes */
-/* importá-las aqui... e definir as `font-family` da turminha... */
+@import url(fonts/ravie.css);
+@import url(fonts/verdana.css);
 
+:root{
+  --cor-do-fundo: #fff;
+  --cor-do-texto: #333;
+  --cor-inicio-gradiente:#f6f1b2;
+  --cor-fim-gradiente:#4599b2;
+}
+
+@media(prefers-color-scheme: dark){
+  :root{
+    --cor-do-fundo: #111;
+    --cor-do-texto: #eee;
+    --cor-inicio-gradiente:#073c4c;
+    --cor-fim-gradiente:#05112d;
+  }
+}
+
+
+h1{
+  font-family: 'Ravie';
+}
 
 body {
-  background-color: #fff;
+  background-color: var(--cor-do-fundo);
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family:'Verdana';
 }
 
 strong {
   color: #d027aa;
 }
 
+html, body, #recipiente{
+  min-height: 100vh;
+}
+
 #recipiente {
-  background-image: linear-gradient(to bottom, #f6f1b2, #4599b2 80%);
+  background-image: linear-gradient(to bottom, var(--cor-inicio-gradiente), var(--cor-fim-gradiente) 80%);
   border-left: 1px solid #d3d3d3;
   border-right: 1px solid #d3d3d3;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #cardapio {
@@ -25,46 +55,53 @@ strong {
 
 #cardapio h3 {
   font-size: 18px;
-  color: #333;
+  color: var(--cor-do-texto);
   margin-top: 30px;
 }
 
 #cardapio article {
   font-size: 14px;
-  color: #333;
+  color: var(--cor-do-texto);
 }
 
 
 /* EXERCÍCIO 2: layout da página */
 #recipiente {
-  /* layout da página aqui */
-  /* ... */
-  /* ... */
-  /* ... */
-  /* ... */
+  display: grid;
+  width: 800px;
+  grid-template-columns: 154px 1fr;
+  grid-template-rows: auto 1fr auto;
 }
 
 #cabecalho-pagina {
-
+  grid-column:2/3;
+  grid-row:1/2;
 }
 
 #lateral {
-
+  grid-column: 1/2;
+  grid-row:1/4;
 }
 
 #cardapio {
-
+  grid-column:2/3;
+  grid-row: 2/3;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #rodape-pagina {
-
+  grid-column: 2/3;
+  grid-row:3/4;
 }
 
 
 
 /* EXERCÍCIO 3: cabeçalho da página */
 #cabecalho-pagina {
-
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px
 }
 
 #cabecalho-pagina h1 {
@@ -72,42 +109,66 @@ strong {
   font-size: 36px;
   color: #e90c0c;
   font-weight: normal;
+  text-align: center;
 }
 
 #cabecalho-pagina h2 {
   margin: 0;
   font-size: 24px;
-  color: #333;
+  color: var(--cor-do-texto);
   font-weight: normal;
+  text-align: right;
 }
 
 /* EXERCÍCIO 4: cada item do menu */
 article {
+  display:flex;
+  justify-content: space-between;
+  line-height: 2em;
 }
 
 
 /* EXERCÍCIO 5: o rodapé */
 #rodape-pagina {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+  margin-bottom: 25px;
+  margin-top: 46px;
 }
 
 /* EXERCÍCIO 6: lateral */
 #lateral {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
 /* EXERCÍCIO 7: o ticket */
 #ticket {
+  position: fixed;
+  left: -89px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 200ms ease-out;
 }
 
 #ticket:hover {
+  left:0px;
 }
 
 
 /* EXERCÍCIO 8: deslocamento no siri e peixe */
 #siri {
+  position:relative;
+  left: -10px;
+  top: 17px;
 }
 
 #peixe {
+  position:relative;
+  left: -44px;
 }
 
 /* EXERCÍCIO 9: bolhas - no HTML e no JS */
